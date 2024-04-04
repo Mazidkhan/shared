@@ -7,6 +7,10 @@ def call() {
     def classLoader = this.class.classLoader
     def configStream = classLoader.getResourceAsStream("config.properties")
 
-    configProperties.load(configStream)
-    def channel=configProperties.getProperty('SLACK_CHANNEL_NAME')
+    if (configStream != null) {
+        configProperties.load(configStream)
+        def channel=configProperties.getProperty('SLACK_CHANNEL_NAME')
+    } else {
+        return "Hello from shared library! (config.properties not found)"
+    }
 }
