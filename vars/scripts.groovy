@@ -16,6 +16,3 @@ def call() {
     def kas = configProperties.getProperty('KEEP_APPROVAL_STAGE')
 }
 
-def approval(){
-    input 'Do you want to continue?'
-}
